@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Discord;
@@ -23,7 +22,6 @@ namespace WarBot
         private void Start(string[] args)
         {
             Console.Title = $"{AppName} {Version}";
-
             Core.Intro();
 
             _bot = new DiscordClient(x =>
@@ -46,12 +44,73 @@ namespace WarBot
                     }
                     else
                     {
+                        #region Core Commands
+                        // Help Cmd
                         if (e.Message.Text == "!help")
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
                             e.Channel.SendMessage(Core.HelpCmd());
                         }
+
+                        // Quit Cmd
+                        if (e.Message.Text == "!exit" || e.Message.Text == "!quit" || e.Message.Text == "!disc")
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+
+                            if (e.Message.User.Id.ToString() == "202128606481219585")
+                            {
+                                e.Channel.SendMessage("Shutting Down.");
+
+                                _bot.Disconnect();
+                            }
+                            // Do Nothing
+                        }
+                        #endregion
+
+                        #region Crypto Commands
+                        // Polynomial Encryption Cmd
+                        if (e.Message.Text.Contains("!polye"))
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+                            e.Channel.SendMessage("Polynomial Encryption:");
+
+                            string cmd = e.Message.RawText.Replace("!polye ", "");
+                            string[] SplitStr = cmd.Split(null);
+                            string PlainTextMsg = SplitStr[0];
+                            string Password = SplitStr[1];
+
+                            e.Channel.SendMessage(WarBot.PolyCrypt.polyEncryptTxt(PlainTextMsg, Password));
+                        }
+
+                        // Polynomial Decryption Cmd
+                        if (e.Message.Text.Contains("!polyd"))
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+                            e.Channel.SendMessage("Polynomial Decryption:");
+
+                            string cmd = e.Message.RawText.Replace("!polyd ", "");
+                            string[] SplitStr = cmd.Split(null);
+                            string EncryptedMsg = SplitStr[0];
+                            string Password = SplitStr[1];
+
+                            e.Channel.SendMessage(WarBot.PolyCrypt.polyDecryptTxt(EncryptedMsg, Password));
+                        }
+                        #endregion
+
+                        #region AI Commands
+                        // AI Chat On
+                        if (e.Message.Text == "!chat on")
+                        {
+                            // TODO
+                        }
+
+                        // AI Chat Off
+                        if (e.Message.Text == "!chat off")
+                        {
+                            // TODO
+                        }
+                        #endregion
                     }
                 }
                 else
@@ -60,7 +119,6 @@ namespace WarBot
                     // AI Chat
                 }
                 #endregion
-                //Console.WriteLine(e.User.ToString());
             };
 
             // Needs to be last, nothing will run after ExecuteAndWait
