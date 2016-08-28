@@ -1,0 +1,2 @@
+# WarBot
+Discord.net Bot
