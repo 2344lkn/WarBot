@@ -1,2 +1,30 @@
-# WarBot
-Discord.net Bot
+# WarBot v1.1.4
+[![NuGet Pre Release](https://img.shields.io/nuget/vpre/Discord.Net.svg?maxAge=2592000?style=plastic)](https://www.nuget.org/packages/Discord.Net) [![Discord](https://discordapp.com/api/guilds/215183351563157504/widget.png)](https://discord.gg/2Wc3DMd)
+
+Discord.net Bot C# - Artificial Intelligence WarBot
+
+Creating an Artificial Intelligence Bot for Discord to do a number of tasks like... Taking Over the World.
+
+## [Click here to invite WarBot to your Discord server](https://discordapp.com/oauth2/authorize?client_id=208255953257103364&scope=bot&permissions=66186303)
+
+### Change Log
+- + Added a tool | * Update/Bugfix | ^ AI Grows Stronger
+- [1.0.0]] WarBot's Working Creation
+- [1.0.1]+ Polynomial Encryption and Decryption
+- [1.0.2]+ Artificial Intelligence Chat
+- [1.0.3]^ Machine Learning (Chat Convos)
+- [1.0.4]* Cleaned up code, Faster and Optimized Bot Structure
+- [1.1.4]] Migrated to [Discord.Net](https://github.com/RogueException/Discord.Net/)
+
+### Bot Commands
+- !help - Shows a list of commands.
+- !about - Displays Version and Info about the bot.
+- !polye [message] [password] - Polynomial Encryption
+- !polyd [encryptedString] [password] - Polynomial Decryption
+- !chat on - Turns on AI Chat
+- !chat off - Turns off AI Chat
+
+### Features Under Development:
+ - Mathematical Expressions Evaluator
+ - UrlScanner
+ - Neural Network Base
