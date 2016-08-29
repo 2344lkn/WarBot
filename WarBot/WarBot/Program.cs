@@ -68,6 +68,14 @@ namespace WarBot
                             e.Channel.SendMessage(Core.HelpCmd());
                         }
 
+                        // About Cmd
+                        if (e.Message.Text == "!about")
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+
+                            e.Channel.SendMessage(Core.AboutCmd());
+                        }
+
                         // Quit Cmd
                         if (e.Message.Text == "!exit" || e.Message.Text == "!quit" || e.Message.Text == "!disc")
                         {

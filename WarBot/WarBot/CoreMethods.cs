@@ -19,6 +19,26 @@ namespace WarBot
         public static string HelpCmd()
         {
             string help = "``` Artificial Intelligence WarBot " + Program.Version + "\r\n" +
+                "\r\n" +
+                "**Bot Commands** \r\n" +
+                "Core Commands: \r\n" +
+                " !help - Shows a list of commands. \r\n" +
+                " !about - Displays Version and Info about the bot. \r\n" +
+                "\r\n" +
+                "Crypto Commands: \r\n" +
+                " !polye [message] [password] - Polynomial Encryption \r\n" +
+                " !polyd [encryptedString] [password] - Polynomial Decryption \r\n" +
+                "\r\n" +
+                "A.I. Commands: \r\n" +
+                " !chat on - Turns on AI Chat \r\n" +
+                " !chat off - Turns off AI Chat ```";
+
+            return help;
+        }
+
+        public static string AboutCmd()
+        {
+            string about = "``` Artificial Intelligence WarBot " + Program.Version + "\r\n" +
                 @" __      __             __________        __   " + "\r\n" +
                 @"/  \    /  \_____ ______\______   \ _____/  |_ " + "\r\n" +
                 @"\   \/\/   /\__  \ _  __ \    |  _//  _ \   __|" + "\r\n" +
@@ -26,29 +46,22 @@ namespace WarBot
                 @"  \__/\  /  (____  /__|  |______  /\____/|__|" + "\r\n" +
                 @"       \/        \/             \/         v1" + "\r\n" +
                 "\r\n" +
-                "[List of Commands] \r\n" +
-                " ------------------ \r\n" +
-                // Core
-                "[Core Commands] \r\n" +
-                " !help - Shows a list of commands. \r\n" +
-                " !about - Displays Version and Info about the bot. \r\n" +
-                " !exit - Shuts down the bot. \r\n" +
+                "**Change Log** \r\n" +
+                "+ Added a tool | * Update / Bugfix | ^ AI Grows Stronger \r\n" +
+                " [1.0.0]] WarBot's Working Creation \r\n" +
+                " [1.0.1]+ Polynomial Encryption and Decryption \r\n" +
+                " [1.0.2]+ Artificial Intelligence Chat \r\n" +
+                " [1.0.3]^ Machine Learning(Chat Convos) \r\n" +
+                " [1.0.4]* Cleaned up code, Faster and Optimized Bot Structure \r\n" +
+                " [1.1.4]] Migrated to Discord.Net \r\n" +
                 "\r\n" +
-                // Crypto
-                "[Crypto] \r\n" +
-                " ~ Polynomial Encryption \r\n" +
-                " !polye <message> <password> \r\n" +
-                "   Password must be 5 characters or greater. \r\n" +
-                " ~ Polynomial Decryption \r\n" +
-                " !polyd <encryptedString> <password> \r\n" +
-                "\r\n" +
-                // AI
-                "[AI] \r\n" +
-                " ~ AI Chat \r\n" +
-                " !chat on \r\n" +
-                " !chat off ```";
+                "**Features Under Development** \r\n" +
+                " Mathematical Expressions Evaluator \r\n" +
+                " UrlScanner \r\n" +
+                " Neural Network Base ``` \r\n" +
+                "https://github.com/2344lkn/WarBot";
 
-            return help;
+            return about;
         }
 
         public static void WriteLineColoured(int startColor, int endColor, string text)
