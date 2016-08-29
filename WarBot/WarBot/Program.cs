@@ -13,7 +13,7 @@ namespace WarBot
 
         private const string AppName = "WarBot";
         private const string AppUrl = "https://github.com/2344lkn/WarBot";
-        public const string Version = "1.1.4";
+        public const string Version = "1.1.5";
 
         private static bool ChatOn = false;
         public static string DiscordUser = "2344lkn";
@@ -29,7 +29,7 @@ namespace WarBot
             _bot = new DiscordClient(x =>
             {
                 x.AppName = AppName;
-                //x.MessageCacheSize = 10;
+                x.MessageCacheSize = 10;
                 //x.EnablePreUpdateEvents = true;
             });
 
@@ -139,6 +139,16 @@ namespace WarBot
                             e.Channel.SendMessage("Talking is silenced.");
                             ChatOn = false;
                         }
+
+                        // AI Math
+                        if (e.Message.Text.Contains("!math "))
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+                            e.Channel.SendMessage("Math Expression Evaluation:");
+
+                            string cmd = e.Message.RawText.Replace("!math ", "");
+                            e.Channel.SendMessage(NCalc.NCalcInput(cmd));
+                        }
                         #endregion
                     }
                 }
@@ -162,6 +172,13 @@ namespace WarBot
                     }
                     // NCalc
                 }
+
+                /*
+                foreach (Role UserRole in e.User.Roles)
+                {
+                    Console.WriteLine(UserRole);
+                }
+                */
                 #endregion
             };
 

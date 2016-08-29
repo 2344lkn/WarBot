@@ -30,6 +30,7 @@ namespace WarBot
                 " !polyd [encryptedString] [password] - Polynomial Decryption \r\n" +
                 "\r\n" +
                 "A.I. Commands: \r\n" +
+                " !math [expression] - Mathematical Expression Evaluation\r\n" +
                 " !chat on - Turns on AI Chat \r\n" +
                 " !chat off - Turns off AI Chat ```";
 
@@ -54,6 +55,7 @@ namespace WarBot
                 " [1.0.3]^ Machine Learning(Chat Convos) \r\n" +
                 " [1.0.4]* Cleaned up code, Faster and Optimized Bot Structure \r\n" +
                 " [1.1.4]] Migrated to Discord.Net \r\n" +
+                " [1.1.5]+ Mathematical Expression Evaluation NCalc \r\n" +
                 "\r\n" +
                 "**Features Under Development** \r\n" +
                 " Mathematical Expressions Evaluator \r\n" +

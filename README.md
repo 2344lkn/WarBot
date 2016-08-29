@@ -15,16 +15,17 @@ Creating an Artificial Intelligence Bot for Discord to do a number of tasks like
 - [1.0.3]^ Machine Learning (Chat Convos)
 - [1.0.4]* Cleaned up code, Faster and Optimized Bot Structure
 - [1.1.4]] Migrated to [Discord.Net](https://github.com/RogueException/Discord.Net/)
+- [1.1.5]+ Mathematical Expression Evaluation NCalc
 
 ### Bot Commands
 - !help - Shows a list of commands.
 - !about - Displays Version and Info about the bot.
 - !polye [message] [password] - Polynomial Encryption
 - !polyd [encryptedString] [password] - Polynomial Decryption
+- !math [expression] - Mathematical Expression Evaluation
 - !chat on - Turns on AI Chat
 - !chat off - Turns off AI Chat
 
 ### Features Under Development:
- - Mathematical Expressions Evaluator
- - UrlScanner
+ - UrlScanner (Finds Admin Login Pages)
  - Neural Network Base
