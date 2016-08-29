@@ -1,4 +1,4 @@
-# WarBot v1.1.4
+# WarBot v1.1.5
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Discord.Net.svg?maxAge=2592000?style=plastic)](https://www.nuget.org/packages/Discord.Net) [![Discord](https://discordapp.com/api/guilds/215183351563157504/widget.png)](https://discord.gg/2Wc3DMd)
 
 Discord.net Bot C# - Artificial Intelligence WarBot
