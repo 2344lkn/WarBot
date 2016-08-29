@@ -16,6 +16,7 @@ namespace WarBot
         public const string Version = "1.1.4";
 
         private static bool ChatOn = false;
+        public static string DiscordUser = "2344lkn";
 
         private DiscordClient _bot;
 
@@ -24,6 +25,7 @@ namespace WarBot
             Console.Title = $"{AppName} {Version}";
             Core.Intro();
 
+            // Connect Discord Bot
             _bot = new DiscordClient(x =>
             {
                 x.AppName = AppName;
@@ -31,8 +33,21 @@ namespace WarBot
                 //x.EnablePreUpdateEvents = true;
             });
 
+            // Load AIML Chat files
+            try
+            {
+                AIML.LoadAIMLFiles();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            // Main bot Loop (Waiting for Discord Messages)
             _bot.MessageReceived += (s, e) =>
             {
+                DiscordUser = e.Message.User.ToString();
+
                 #region Bot Commands
                 // Bot Command Prefix
                 if (e.Message.Text.StartsWith("!"))
@@ -102,21 +117,42 @@ namespace WarBot
                         // AI Chat On
                         if (e.Message.Text == "!chat on")
                         {
-                            // TODO
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+
+                            e.Channel.SendMessage("Talking is my primary function.");
+                            ChatOn = true;
                         }
 
                         // AI Chat Off
                         if (e.Message.Text == "!chat off")
                         {
-                            // TODO
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+
+                            e.Channel.SendMessage("Talking is silenced.");
+                            ChatOn = false;
                         }
                         #endregion
                     }
                 }
                 else
                 {
-                    // NCalc
                     // AI Chat
+                    if (e.Message.IsAuthor)
+                    {
+                        Console.WriteLine("[BOT] " + e.Message.Text);
+                        // do nothing
+                    }
+                    else
+                    {
+                        Console.WriteLine(e.User.ToString() + "[CHAT] " + e.Message.Text);
+
+                        if (ChatOn == true)
+                        {
+                            e.Channel.SendMessage(AIML.AIMLInput(e.Message.Text));
+                        }
+                        // do nothing
+                    }
+                    // NCalc
                 }
                 #endregion
             };
