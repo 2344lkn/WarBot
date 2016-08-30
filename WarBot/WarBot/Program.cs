@@ -76,6 +76,13 @@ namespace WarBot
                             e.Channel.SendMessage(Core.AboutCmd());
                         }
 
+                        // WarBot Stats Cmd
+                        if (e.Message.Text == "!stats")
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+                            // TODO: Add Stats Command
+                        }
+
                         // Quit Cmd
                         if (e.Message.Text == "!exit" || e.Message.Text == "!quit" || e.Message.Text == "!disc")
                         {
@@ -83,8 +90,6 @@ namespace WarBot
 
                             if (e.Message.User.Id.ToString() == "202128606481219585")
                             {
-                                e.Channel.SendMessage("Shutting Down.");
-
                                 _bot.Disconnect();
                             }
                             // Do Nothing
@@ -189,7 +194,7 @@ namespace WarBot
                 {
                     try
                     {
-                        await _bot.Connect("bot.token");
+                        await _bot.Connect(WarBotJson.QueryToken());
 
                         Console.WriteLine("[Connected] " + $"Connected as {_bot.CurrentUser.Name} (Id {_bot.CurrentUser.Id})");
                         break;

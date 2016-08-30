@@ -79,7 +79,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoreMethods.cs" />
+    <Compile Include="Classes\CoreMethods.cs" />
+    <Compile Include="Classes\WarBotStats.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\AI\AIML.cs" />
