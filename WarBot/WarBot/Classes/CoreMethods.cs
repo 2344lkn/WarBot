@@ -4,7 +4,7 @@ namespace WarBot
 {
     class Core
     {
-        public static void Intro()
+        public static void ConsoleIntro()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@" __      __             __________        __   ");
@@ -24,6 +24,8 @@ namespace WarBot
                 "Core Commands: \r\n" +
                 " !help - Shows a list of commands. \r\n" +
                 " !about - Displays Version and Info about the bot. \r\n" +
+                " !stats - Displays bot stats. \r\n" +
+                " !uptime - Shows the uptime of the bot. \r\n" +
                 "\r\n" +
                 "Crypto Commands: \r\n" +
                 " !polye [message] [password] - Polynomial Encryption \r\n" +
@@ -56,9 +58,11 @@ namespace WarBot
                 " [1.0.4]* Cleaned up code, Faster and Optimized Bot Structure \r\n" +
                 " [1.1.4]] Migrated to Discord.Net \r\n" +
                 " [1.1.5]+ Mathematical Expression Evaluation NCalc \r\n" +
+                " [1.1.6]+ Added token to json file, and Bot Stats \r\n" +
+                " [1.1.7]+ Uptime, and Bot Stats \r\n" +
                 "\r\n" +
                 "**Features Under Development** \r\n" +
-                " Mathematical Expressions Evaluator \r\n" +
+                " Music Bot \r\n" +
                 " UrlScanner \r\n" +
                 " Neural Network Base ``` \r\n" +
                 "https://github.com/2344lkn/WarBot";

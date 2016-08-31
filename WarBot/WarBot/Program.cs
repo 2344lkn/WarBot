@@ -13,17 +13,21 @@ namespace WarBot
 
         private const string AppName = "WarBot";
         private const string AppUrl = "https://github.com/2344lkn/WarBot";
-        public const string Version = "1.1.5";
+        public const string Version = "1.1.7";
 
         private static bool ChatOn = false;
         public static string DiscordUser = "2344lkn";
+        public DateTime startTime = DateTime.Now;
 
         private DiscordClient _bot;
 
         private void Start(string[] args)
         {
             Console.Title = $"{AppName} {Version}";
-            Core.Intro();
+            Core.ConsoleIntro();
+
+            // Load Stats from WarBotJson
+            WarBotJson.SetWarBotStats();
 
             // Connect Discord Bot
             _bot = new DiscordClient(x =>
@@ -66,6 +70,7 @@ namespace WarBot
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
                             e.Channel.SendMessage(Core.HelpCmd());
+                            WarBotJson.CommandsRan++;
                         }
 
                         // About Cmd
@@ -74,13 +79,33 @@ namespace WarBot
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
                             e.Channel.SendMessage(Core.AboutCmd());
+                            WarBotJson.CommandsRan++;
                         }
 
                         // WarBot Stats Cmd
                         if (e.Message.Text == "!stats")
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
-                            // TODO: Add Stats Command
+                            // TODO: Add total time
+                            e.Channel.SendMessage("```Commands Executed: " + WarBotJson.CommandsRan + "\r\n" +
+                                "Total Time Online: " + WarBotJson.TotalTimeOnline + "\r\n" +
+                                "Math Problems Solved: " + WarBotJson.MathSolved + "\r\n" +
+                                "AI Chat Messages: " + WarBotJson.AIChatMsgs + "```");
+
+                            WarBotJson.CommandsRan++;
+                        }
+
+                        // Uptime
+                        if (e.Message.Text == "!uptime" || e.Message.Text == "!s")
+                        {
+                            Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
+
+                            // TODO: Add uptime command to CoreMethods.cs
+                            var delta = DateTime.Now - startTime;
+                            e.Channel.SendMessage((delta.Days.ToString("N0") + " days, " + delta.Hours.ToString("N0") +
+                                " hours and " + delta.Minutes.ToString("N0") + " minutes"));
+
+                            WarBotJson.CommandsRan++;
                         }
 
                         // Quit Cmd
@@ -90,7 +115,15 @@ namespace WarBot
 
                             if (e.Message.User.Id.ToString() == "202128606481219585")
                             {
+                                WarBotJson.UpdateWarBotStats();
+
+                                Task.Delay(500); // Delay the bot so we can update WarBotJson
+
                                 _bot.Disconnect();
+                            }
+                            else
+                            {
+                                // Do Nothing
                             }
                             // Do Nothing
                         }
@@ -109,6 +142,7 @@ namespace WarBot
                             string Password = SplitStr[1];
 
                             e.Channel.SendMessage(WarBot.PolyCrypt.polyEncryptTxt(PlainTextMsg, Password));
+                            WarBotJson.CommandsRan++;
                         }
 
                         // Polynomial Decryption Cmd
@@ -123,6 +157,7 @@ namespace WarBot
                             string Password = SplitStr[1];
 
                             e.Channel.SendMessage(WarBot.PolyCrypt.polyDecryptTxt(EncryptedMsg, Password));
+                            WarBotJson.CommandsRan++;
                         }
                         #endregion
 
@@ -134,6 +169,7 @@ namespace WarBot
 
                             e.Channel.SendMessage("Talking is my primary function.");
                             ChatOn = true;
+                            WarBotJson.CommandsRan++;
                         }
 
                         // AI Chat Off
@@ -143,6 +179,7 @@ namespace WarBot
 
                             e.Channel.SendMessage("Talking is silenced.");
                             ChatOn = false;
+                            WarBotJson.CommandsRan++;
                         }
 
                         // AI Math
@@ -153,6 +190,7 @@ namespace WarBot
 
                             string cmd = e.Message.RawText.Replace("!math ", "");
                             e.Channel.SendMessage(NCalc.NCalcInput(cmd));
+                            WarBotJson.MathSolved++;
                         }
                         #endregion
                     }
@@ -172,12 +210,11 @@ namespace WarBot
                         if (ChatOn == true)
                         {
                             e.Channel.SendMessage(AIML.AIMLInput(e.Message.Text));
+                            WarBotJson.AIChatMsgs++;
                         }
                         // do nothing
                     }
-                    // NCalc
                 }
-
                 /*
                 foreach (Role UserRole in e.User.Roles)
                 {
