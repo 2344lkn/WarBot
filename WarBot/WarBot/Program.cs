@@ -88,7 +88,7 @@ namespace WarBot
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
                             // TODO: Add total time
                             e.Channel.SendMessage("```Commands Executed: " + WarBotJson.CommandsRan + "\r\n" +
-                                "Total Time Online: " + WarBotJson.TotalTimeOnline + "\r\n" +
+                                //"Total Time Online: " + WarBotJson.TotalTimeOnline + "\r\n" +
                                 "Math Problems Solved: " + WarBotJson.MathSolved + "\r\n" +
                                 "AI Chat Messages: " + WarBotJson.AIChatMsgs + "```");
 
@@ -100,7 +100,6 @@ namespace WarBot
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
-                            // TODO: Add uptime command to CoreMethods.cs
                             var delta = DateTime.Now - startTime;
                             e.Channel.SendMessage((delta.Days.ToString("N0") + " days, " + delta.Hours.ToString("N0") +
                                 " hours and " + delta.Minutes.ToString("N0") + " minutes"));
