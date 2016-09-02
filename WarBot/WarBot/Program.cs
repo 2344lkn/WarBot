@@ -112,7 +112,7 @@ namespace WarBot
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
-                            if (e.Message.User.Id == "202128606481219585")
+                            if (e.Message.User.Id.ToString() == "202128606481219585")
                             {
                                 WarBotJson.UpdateWarBotStats();
 
