@@ -1,8 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-
-using Newtonsoft.Json.Linq;
+﻿using System.IO;
+using Newtonsoft.Json.Linq; // TODO: Remove Linq
 using Newtonsoft.Json;
 
 namespace WarBot
