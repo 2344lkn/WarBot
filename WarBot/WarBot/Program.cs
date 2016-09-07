@@ -165,9 +165,16 @@ namespace WarBot
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
-                            e.Channel.SendMessage("Talking is my primary function.");
-                            ChatOn = true;
-                            WarBotJson.CommandsRan++;
+                            if (ChatOn == true)
+                            {
+                                e.Channel.SendMessage("Chat is already enabled.");
+                            }
+                            else
+                            {
+                                e.Channel.SendMessage("Talking is my primary function.");
+                                ChatOn = true;
+                                WarBotJson.CommandsRan++;
+                            }
                         }
 
                         // AI Chat Off
@@ -175,9 +182,16 @@ namespace WarBot
                         {
                             Core.WriteLineColoured(3, 2, e.User.ToString() + " [CMD] " + e.Message.Text);
 
-                            e.Channel.SendMessage("Talking is silenced.");
-                            ChatOn = false;
-                            WarBotJson.CommandsRan++;
+                            if (ChatOn == false)
+                            {
+                                e.Channel.SendMessage("Chat is already disabled.");
+                            }
+                            else
+                            {
+                                e.Channel.SendMessage("Talking is silenced.");
+                                ChatOn = false;
+                                WarBotJson.CommandsRan++;
+                            }
                         }
 
                         // AI Math
@@ -196,7 +210,7 @@ namespace WarBot
                 else
                 {
                     // AI Chat
-                    if (e.Message.IsAuthor)
+                    if (e.Message.IsAuthor || e.Message.User.Id.ToString() == "219888834849013761")
                     {
                         Console.WriteLine("[BOT] " + e.Message.Text);
                         // do nothing
