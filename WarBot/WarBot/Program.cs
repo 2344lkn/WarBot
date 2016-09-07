@@ -53,7 +53,7 @@ namespace WarBot
 
                 #region Bot Commands
                 // Bot Command Prefix
-                if (e.Message.Text.StartsWith("!"))
+                if (e.Message.Text.StartsWith("!") || e.Message.Text.StartsWith("."))
                 {
                     if (e.Message.IsAuthor)
                     {
