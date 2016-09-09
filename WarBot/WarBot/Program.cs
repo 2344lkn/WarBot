@@ -243,7 +243,7 @@ namespace WarBot
                 {
                     try
                     {
-                        await _bot.Connect(WarBotJson.QueryToken());
+                        await _bot.Connect("Bot " + WarBotJson.QueryToken());
 
                         Console.WriteLine("[Connected] " + $"Connected as {_bot.CurrentUser.Name} (Id {_bot.CurrentUser.Id})");
                         break;
