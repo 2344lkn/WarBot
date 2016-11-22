@@ -31,6 +31,10 @@ Creating an Artificial Intelligence Bot for Discord to do a number of tasks like
 - !chat off - Turns off AI Chat
 
 ### Features Under Development:
- - Music Bot
- - UrlScanner (Finds Admin Login Pages)
  - Neural Network Base
+ - Genetic Algorithm
+ 
+### Requirements and Technology:
+ - .NET Framework 4.5.2
+ - Discord.Net 0.9.6 ~ (Install-Package Discord.Net)
+ - NCalc 1.3.8 ~ (Install-Package ncalc)
